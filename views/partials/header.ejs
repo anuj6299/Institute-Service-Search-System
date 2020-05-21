@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>ISSS</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+       
+    
+       
+        <link rel="stylesheet" href="/stylesheets/main.css">
+    </head>
+    <body>
+    <nav class="navbar navbar-dark bg-info navbar-expand-sm mb-4">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand text-dark" href="/"><strong> INSTITUTE SERVICE SEARCH SYSTEM</a></strong>
+            </div>
+            <div class="collapse navbar-collapse">
+                <ul class="nav navbar-nav navbar-right offset-md-10 ">
+                    <% if(!currentUser){ %>
+                        <li class="nav-item active"><a class="nav-link text-light mr-4" href="/campgrounds/new"><span class="fa fa-sign-in fa-lg"></span>Login</a></li>
+                        <li class="nav-item "><a class=" nav-link text-light" href="/register"><span class="fas fa-user-plus fa-lg"></span>Sign Up</a></li>
+                    <% } else { %>
+                        <li><a href="#" style="color: white">Signed in as  <%= currentUser.username %>  </a>
+                        <a href="/logout" style="color: white">   Logout</a></li>
+                    <% } %>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    
+    <div class="container">
+        
+        <% if(error && error.length > 0){ %>
+            <div class="alert alert-danger" role="alert">
+                <%= error %>
+            </div>
+        <% } %>
+        <% if(success && success.length > 0){ %>
+            <div class="alert alert-success" role="alert">
+                <%= success %>
+            </div>
+        <% } %>
+    </div>
+    

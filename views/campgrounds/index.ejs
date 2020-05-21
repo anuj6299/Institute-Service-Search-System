@@ -1,0 +1,53 @@
+<% include ../partials/header %> 
+<div class="bb">
+ <div class="container"  style="background: rgb(240,210,156);
+ background: radial-gradient(circle, rgba(240,210,156,0.37608546836703427) 0%, rgba(49,43,55,0.7570378493194152) 100%);">
+     <header class="jumbotron" style="background: rgb(63,251,189);
+     background: radial-gradient(circle, rgba(63,251,189,1) 0%, rgba(252,70,147,0.5189426112241772) 100%);">
+         <div class="container" >
+             <h1>Welcome To Institute Service Search System!</h1>
+             <p>View all items from all over the institue at one place</p>
+             <p>
+                <form action="/campgrounds" method="GET" class="form-inline">
+                    <div class="form-group">
+                        <input type="text" name="search" placeholder="Item search..." class="form-control">
+                        <input type="submit" value="Search" class="btn btn-default">
+                    </div>
+                </form>
+            </p>
+             <p>
+                <a class="btn btn-primary btn-large" href="/campgrounds/new">Add A New Item</a>
+             </p>
+         </div>
+     </header>
+     
+    <div class="row text-center" style="display:flex; flex-wrap: wrap;">
+         <div class="col-md-12">
+             <% if(noMatch !== null) { %>
+             <h3><%= noMatch %></h3>
+             <p>
+            	<form action="/campgrounds" method="GET" class="form-inline">
+            		<div class="form-group">
+            			<input type="text" name="search" placeholder="Item search..." class="form-control">
+            			<input type="submit" value="Search" class="btn btn-default">
+            		</div>
+            	</form>
+            </p>
+             <% } %>
+         </div>
+          <% campgrounds.forEach(function(campground){ %>
+            <div class="col-md-3 col-sm-6">
+                <div class="thumbnail">
+                   <img src="<%= campground.image %>">
+                   <div class="caption">
+                       <h4 style="color:whitesmoke ;"><%= campground.name %></h4>
+                   </div>
+                   <p>
+                       <a href="/campgrounds/<%= campground._id %>" class="btn btn-primary">More Info</a>
+                   </p>
+                </div>
+            </div>
+        <% }); %>
+    </div>
+</div>
+</div>
